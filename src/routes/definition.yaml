@@ -1,0 +1,9 @@
+openapi: "3.0.3"
+info:
+  title: "Calculator API with new update"
+  version: "1.0.0"
+tags:
+  - name: health
+    description: Health check
+  - name: calculator
+    description: Calculator operations

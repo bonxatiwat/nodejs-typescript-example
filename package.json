@@ -1,0 +1,34 @@
+{
+  "name": "typescript-nodejs-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run schemas && npm run copyfiles && tsc -w & nodemon dist/app.js",
+    "dev:win": "start /b tsc -w & nodemon dist/app.js",
+    "schemas": "npm run schemas:openapi && npm run schemas:types",
+    "schemas:openapi": "swagger-jsdoc -d src/routes/definition.yaml src/routes/*.ts \"src/routes/!(definition).yaml\" -o src/schemas/openapi.json",
+    "schemas:types": "openapi-typescript src/schemas/openapi.json -o src/schemas/index.d.ts",
+    "copyfiles": "copyfiles -u 1 src/schemas/*.json dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "express-openapi-validator": "^5.1.6",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/swagger-ui-express": "^4.1.6",
+    "copyfiles": "^2.4.1",
+    "eslint-config-prettier": "^9.1.0",
+    "nodemon": "^3.1.0",
+    "openapi-typescript": "^6.7.6",
+    "prettier": "^3.2.5",
+    "swagger-jsdoc": "^6.2.8",
+    "typescript": "^5.4.5"
+  }
+}
